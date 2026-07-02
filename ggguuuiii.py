@@ -3,12 +3,12 @@ import random
 
 # ---------- Settings ----------
 max_temperature = 25.0
-min_temperature = 20.0
+min_temperature = 22.0
 
 fan_on = False
 ac_on = False
 heater_on = False
-
+windows_open=False
 
 def read_temperature():
     """Pretend to read a sensor by picking a random temperature."""  
@@ -17,16 +17,16 @@ def read_temperature():
 
 def control_temperature(current_temperature):
     """Decide which devices should be ON or OFF."""
-    global fan_on, ac_on, heater_on
+    global fan_on, ac_on, heater_on, windows_open
 
     if current_temperature > max_temperature:
-        fan_on, ac_on, heater_on = True, True, False
-        message = "TOO HOT! AC and Fan turned ON."
+        fan_on, ac_on, heater_on, windows_open = True, True, False, True
+        message = "TOO HOT! AC turned ON, Fan turned ON and windows OPEN."
     elif current_temperature < min_temperature:
-        fan_on, ac_on, heater_on = False, False, True
+        fan_on, ac_on, heater_on , windows_open= False, False, True, False
         message = "TOO COLD! Heater turned ON."
     else:
-        fan_on, ac_on, heater_on = False, False, False
+        fan_on, ac_on, heater_on, windows_open = False, False, False
         message = "PERFECT TEMPERATURE! Everything OFF."
 
     return message
@@ -46,9 +46,11 @@ def update_display():
                       fg="green" if fan_on else "red")
     heater_label.config(text="Heater: ON" if heater_on else "Heater: OFF",
                          fg="green" if heater_on else "red")
-
-    # Run this same function again after 3000 milliseconds (3 seconds)
-    window.after(3000, update_display)
+    windows_label.config(text="Windows: OPEN" if windows_open else "windows: CLOSED",
+                         fg="green" if windows_open else "red")
+    
+   # Run this same function again after 3000 milliseconds (3 seconds)
+    window.after(5000, update_display)
 
 
 # ---------- Build the window ----------
@@ -67,18 +69,20 @@ range_label.pack()
 temp_label = tk.Label(window, text="Current Temperature: -- °C", font=("Arial", 12))
 temp_label.pack(pady=10)
 
-message_label = tk.Label(window, text="", font=("Arial", 11), wraplength=300)
+message_label = tk.Label(window, text="", font=("Arial", 12), wraplength=300)
 message_label.pack(pady=5)
 
-ac_label = tk.Label(window, text="AC: OFF", font=("Arial", 11))
+ac_label = tk.Label(window, text="AC: OFF", font=("Arial", 12))
 ac_label.pack(pady=2)
 
-fan_label = tk.Label(window, text="Fan: OFF", font=("Arial", 11))
+fan_label = tk.Label(window, text="Fan: OFF", font=("Arial", 12))
 fan_label.pack(pady=2)
 
-heater_label = tk.Label(window, text="Heater: OFF", font=("Arial", 11))
+heater_label = tk.Label(window, text="Heater: OFF", font=("Arial", 12))
 heater_label.pack(pady=2)
 
-# Start the automatic updates, then start the GUI loop
+windows_label = tk.Label(window, text="Windows: OPEN", font=("Arial", 12))
+windows_label.pack(pady=2)
+
 update_display()
 window.mainloop()
