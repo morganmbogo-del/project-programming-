@@ -49,7 +49,7 @@ def update_display():
     windows_label.config(text="Windows: OPEN" if windows_open else "windows: CLOSED",
                          fg="green" if windows_open else "red")
     
-   # Run this same function again after 3000 milliseconds (3 seconds)
+   # Run this same function again after 5000 milliseconds (5 seconds)
     window.after(5000, update_display)
 
 
