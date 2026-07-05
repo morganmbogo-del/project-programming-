@@ -7,7 +7,7 @@ def open_security():
 def open_lighting():
     subprocess.Popen(["python", "Lighting and Entertainmentv2.py"])
 def open_energy():
-    subprocess.Popen(["python", "energy_monitoring.py"])
+    subprocess.Popen(["python", "Energy.smartHome.py"])
 root = tk.Tk()
 root.title("Smart Home Dashboard")
 root.geometry("700x500")
