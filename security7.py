@@ -43,7 +43,10 @@ root.geometry("260x380")
 root.resizable(False, False)
 
 tk.Label(root, text=" Enter PIN", font=("Arial", 16, "bold")).pack(pady=10)
+ security-and-access
 dots_label = tk.Label(root, text="O O O O", font=("Arial", 20))
+
+dots_label = tk.Label(root, text="O O O O", font=("Arial", 22)) main
 dots_label.pack()
 status_label = tk.Label(root, text="Unlock to access the house", fg="gray")
 status_label.pack(pady=5)
@@ -60,5 +63,8 @@ for i, k in enumerate(keys):
     btn = tk.Button(frame, text=k, width=5, height=2, font=("Arial", 14), command=cmd)
     btn.grid(row=i // 3, column=i % 3, padx=5, pady=5)
     keypad_buttons.append(btn)
+ security-and-access
+root.mainloop()
 
 root.mainloop()
+ main
