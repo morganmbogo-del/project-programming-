@@ -1,7 +1,7 @@
 import tkinter as tk
 import subprocess
 def open_temperature():
-    subprocess.Popen(["python", "temperature.py"])
+    subprocess.Popen(["python", "ggguuuiii.py"])
 def open_security():
     subprocess.Popen(["python", "security.py"])
 def open_lighting():
