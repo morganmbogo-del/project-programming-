@@ -1,0 +1,35 @@
+import tkinter as tk
+from tkinter import messagebox
+
+root = tk.Tk()
+root.withdraw()  # hide the empty main window
+
+appliances = ["Light", "Television"]
+results = {}
+total_energy = 0
+
+for appliance in appliances:
+    power = int(input(f"Enter the power rating of the {appliance} in watts: "))
+    timeconsumed = int(input(f"Enter the time consumed by the {appliance} in hours: "))
+    energy_consumed = (power * timeconsumed) / 1000  # kWh
+
+    results[appliance] = {
+        "power": power,
+        "time": timeconsumed,
+        "energy": energy_consumed
+    }
+    total_energy += energy_consumed
+
+# Build the summary message
+summary = ""
+for appliance, data in results.items():
+    summary += (
+        f"{appliance}:\n"
+        f"  Power: {data['power']} W\n"
+        f"  Time used: {data['time']} hours\n"
+        f"  Energy consumed: {data['energy']} kWh\n\n"
+    )
+
+summary += f"Total energy consumed: {total_energy} kWh"
+
+messagebox.showinfo("Energy Consumption Report", summary)
