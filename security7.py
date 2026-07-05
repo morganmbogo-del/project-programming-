@@ -43,7 +43,7 @@ root.geometry("260x380")
 root.resizable(False, False)
 
 tk.Label(root, text=" Enter PIN", font=("Arial", 16, "bold")).pack(pady=10)
-dots_label = tk.Label(root, text="O O O O", font=("Arial", 20))
+dots_label = tk.Label(root, text="O O O O", font=("Arial", 22))
 dots_label.pack()
 status_label = tk.Label(root, text="Unlock to access the house", fg="gray")
 status_label.pack(pady=5)
