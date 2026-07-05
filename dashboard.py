@@ -5,7 +5,7 @@ def open_temperature():
 def open_security():
     subprocess.Popen(["python", "security.py"])
 def open_lighting():
-    subprocess.Popen(["python", "lighting.py"])
+    subprocess.Popen(["python", "Lighting and Entertainmentv2.py"])
 def open_energy():
     subprocess.Popen(["python", "energy_monitoring.py"])
 root = tk.Tk()
